@@ -18,6 +18,7 @@ class ParseCommand
     {
         array_shift($args);
         $this->path = array_shift($args);
+        println("Looking in " . $this->path, \Logger::INFO);
     }
     
     /**

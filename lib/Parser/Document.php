@@ -7,7 +7,7 @@ class Document extends Inode
     public function parse($compile)
     {
         if ($this->getExtension() != 'tex') {
-            throw new \Exception('File ' . $this->getPath() . 'is not a LaTeX file');
+            throw new \Exception('File ' . $this->getPath() . ' is not a LaTeX file');
         }
         
         println('Start parsing document ' . $this->getPath(), \Logger::DEBUG);
@@ -63,7 +63,7 @@ class Document extends Inode
 			    mkdir($pathinfo['dirname'].'/processed/');
 			}
 			$destpath = $pathinfo['dirname'].'/processed/'.$pathinfo['filename'].'.pdf';
-			println('Moved processed file to: '.$destpath, \Logger::DEBUG);
+			println('Moved processed file to: '.$destpath, \Logger::INFO);
 			
 			rename(ROOT . '/tex/tmp.pdf', $destpath);
 		}

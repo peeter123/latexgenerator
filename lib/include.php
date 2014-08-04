@@ -1,11 +1,4 @@
 <?php
-class Logger
-{
-    const DEBUG = 'DEBUG';
-    const INFO = 'INFO';
-    const WARNING = 'WARNING';
-    const CRITICAL = 'CRITICAL';
-}
 
 /**
  * Compile the given file
@@ -20,9 +13,28 @@ function compile($file)
     exec(__DIR__.'/ppdflatex -q --input tmp.log', $output);
     array_pop($output);
     foreach ($output as $line) {
-        println($line, \Logger::INFO);
+        if (contains('** Error', $output)) {
+            println($line, \Logger::CRITICAL);
+        } else {
+            println($line, \Logger::INFO);
+        }
     }
     return $response;
+}
+
+
+/**
+ * Check if a word is in an array of strings
+ * @param $str
+ * @param array $arr
+ * @return bool
+ */
+function contains($str, array $arr)
+{
+    foreach($arr as $a) {
+        if (stripos($a,$str) !== false) return true;
+    }
+    return false;
 }
 
 /**
@@ -61,7 +73,11 @@ function println($line, $level = Logger::INFO)
             $logLine = Colors::getColoredString($logLine, 'green');
             break;
         case Logger::DEBUG:
-            $logLine = Colors::getColoredString($logLine, 'light_cyan');
+            if (Logger::$debug) {
+                $logLine = Colors::getColoredString($logLine, 'light_cyan');
+            } else {
+                return;
+            }
             break;
         default:
             break;

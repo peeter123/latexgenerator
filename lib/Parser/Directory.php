@@ -11,7 +11,7 @@ class Directory extends Inode
     public function parse($compile)
     {
         if ($dh = opendir($this->getPath())) {
-            println('Walk through directory' . $this->getPath());
+            println('Walk through directory' . $this->getPath(), \Logger::DEBUG);
             while (($file = readdir($dh)) !== false) {
                 if ($file == '.' || $file == '..' || $file == 'processed') {
                     continue;
@@ -33,7 +33,7 @@ class Directory extends Inode
             }
             closedir($dh);
         } else {
-            throw new \Exception('Could not load path ' . $this->getPath());
+            throw new \Exception('Could not load path ' . $this->getPath(), \Logger::DEBUG);
         }
     }
 }
