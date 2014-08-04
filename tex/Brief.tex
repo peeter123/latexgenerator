@@ -1,0 +1,77 @@
+\input{Huisstijl}
+\usepackage{multicol}
+
+\setlength{\parskip}{0.5cm}
+
+\newcommand{\Aan}[4]{
+\ \vspace{1.3cm}\\
+\textbf{#1} \\\
+\textbf{#2} \\
+\textbf{#3} \\
+\textbf{#4} \\
+}
+
+\newcommand{\Titel}[1]{
+\begin{multicols}{2}
+\ \vfill
+
+\textbf{\sffamily{}\Large{#1}}
+
+\vfill\ 
+
+\begin{flushright}
+\includegraphics[width=5cm]{wapen-zwart}
+\end{flushright}
+\end{multicols}
+\vspace{1\baselineskip}
+}
+\newcommand{\notefont}[1]{
+\textsf{\footnotesize{#1}}
+}
+
+\newcommand{\HeadInfo}[5]{
+\begin{tabbing}
+\hspace{5cm} \= \hspace{5cm} \= \hspace{5cm} \=\\
+\notefont{\textbf{Datum}} \> \notefont{\textbf{Uw kenmerk}} \> \notefont{\textbf{#1}}\\
+#2 \> #3 \> #4 \\
+\\
+\notefont{\textbf{Onderwerp}}\\
+#5 \\
+\end{tabbing}
+}
+
+
+\newcommand{\Info}[4]{
+\HeadInfo{Ons kenmerk}{#1}{#2}{#3}{#4}
+}
+
+
+
+\newcommand{\Aanhef}[1]{#1}
+
+\newcommand{\Afsluiting}[3]{
+\vspace{0.5cm}
+#1\\
+\\\\\\\\
+#2\\
+#3
+}
+
+\newcommand{\AfsluitingUitgebreid}[4]{
+\vspace{0.5cm}
+#1\\
+\\\\\\\\
+#2\\
+#3\\\\
+E: #4@scintilla.utwente.nl\\
+T: +31 (0)53 489 2810\\
+F: +31 (0)53 489 1068\\
+W: www.scintilla.utwente.nl
+}
+
+\newcommand{\comite}{Het Comit\'e}
+\newcommand{\etsv}{E.T.S.V. Scintilla}
+\newcommand{\etsvfunctie}[1]{#1 der \etsv}
+\newcommand{\bestuur}{\etsvfunctie{83$^e$ bestuur}}
+
+%\newcommand{\Bijlage}[1]{Bijlage: #1}
