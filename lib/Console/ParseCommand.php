@@ -29,8 +29,13 @@ class ParseCommand
         if ($this->path === null) {
             throw new \Exception('No path given to parse');
         }
-        
-        $path = realpath(rtrim(getcwd(), '/') . '/' . $this->path);
+
+        if($this->path[0] == '/') {
+            $path = realpath($this->path);
+        } else {
+            $path = realpath(rtrim(getcwd(), '/') . '/' . $this->path);
+        }
+
 
         if (is_file($path)) {
             $obj = new \Parser\Document($path);
