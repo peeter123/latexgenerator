@@ -7,10 +7,14 @@
  */
 function compile($file) 
 {
+    //Compile current document
     $bash = 'latexmk -pdf -silent \'%s\' -gg 2>&1';
     $output = null;
     $response = exec(sprintf($bash, $file));
-    exec(__DIR__.'/ppdflatex -q --input tmp.log', $output);
+
+    //Get errors for current document
+    $path = '\''.__DIR__.'/ppdflatex\' -q --input tmp.log';
+    exec($path, $output);
     array_pop($output);
     foreach ($output as $line) {
         if (contains('** Error', $output)) {
